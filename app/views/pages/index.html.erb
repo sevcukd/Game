@@ -1,0 +1,36 @@
+<h1>Pages#index</h1>
+<p>Find me in app/views/pages/index.html.erb</p>
+
+<% if @games.errors.any? %>
+<div id=”error_explanation”>
+<h2><%= pluralize(@product.errors.count, “error”) %> prohibited this game from being saved:</h2>
+
+<ul>
+<% @game.errors.full_messages.each do |msg| %>
+<li><%= msg %></li>
+<% end %>
+</ul>
+</div>
+<% end %>
+<br>
+
+
+<%= link_to “login”, new_user_session_path %> <br>
+<hr>
+
+<% if user_signed_in?%>
+
+<%= link_to “create new game”, new_game_path %> <br>
+<hr>
+
+<% @games.each do | p | %>
+<%= p.nickname %><br/>
+<%= p.age %><br/>
+<% @game.photos.each do |photo| %>
+<%= image_tag(photo.url) %>
+<% end %>
+
+<p><%= link_to “Read more”, game_path(product.id) %></p>
+<hr>
+<% end %>
+<% end %>
